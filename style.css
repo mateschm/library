@@ -1,0 +1,27 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+input {
+    display: block;
+}
+
+table button {
+    background-color: black;
+    border: none;
+}
+
+table button:hover {
+    cursor: pointer;
+}

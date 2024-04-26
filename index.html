@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">My library</a></h1>
+    </header>
+    <table>
+        <colgroup>
+            <col />
+            <col />
+            <col />
+            <col style="border: 1px solid black;"/>
+        </colgroup>
+    <thead>
+        
+        <tr>
+            <th scope="col">Author</th>
+            <th scope="col">Name</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>    
+    </table>
+    <form id="add">
+        <input type="text" id="author" placeholder="author">
+        <input type="text" id="title" placeholder="title">
+        <select id="status">
+            <option value="read">read</option>
+            <option value="not read">not read</option>
+        </select>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>
