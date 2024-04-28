@@ -1,6 +1,7 @@
 const table = document.querySelector(`tbody`);
 const form = document.getElementById(`add`);
 
+
 const myLibrary = [];
 
 function Book(author, title, status) {
@@ -9,7 +10,16 @@ function Book(author, title, status) {
   this.status = status;
 }
 
-function createTableRow (obj) {
+Book.prototype.toggle = function() {
+    if (this.status === `read`) {
+        this.status = `not read`;
+    } else {
+        this.status = `read`;
+    }
+    createTable();
+};
+
+function createTable () {
     while (table.firstChild) {
         table.removeChild(table.firstChild);
     }
@@ -18,15 +28,26 @@ function createTableRow (obj) {
         const deleteButton = document.createElement(`button`);
         deleteButton.textContent = `❌`
         table.appendChild(row); 
-        for (const [key, value] of Object.entries(obj[i])) {
+        for (const [key, value] of Object.entries(myLibrary[i])) {
             const data = document.createElement(`td`);
             row.appendChild(data);
             data.textContent = `${value}`
         }
+        
         deleteButton.setAttribute(`data-index-number`, `${i}`);
         deleteButton.addEventListener(`click`, removeBook);
         row.appendChild(deleteButton)
     }
+    const statusCells = document.querySelectorAll(`td:nth-child(3)`);
+    let i = 0;
+    statusCells.forEach((cell) => {
+        cell.setAttribute(`data-index-number`, `${i}`);
+        cell.addEventListener(`click`, function (e) {
+            const index = e.target.getAttribute(`data-index-number`);
+            myLibrary[index].toggle();
+        });
+        i++;
+    });
 }
 
 form.addEventListener(`submit`, (e) => {
@@ -40,15 +61,17 @@ form.addEventListener(`submit`, (e) => {
 
     myLibrary.push(book);
 
-    createTableRow(myLibrary);
+    createTable();
     form.reset();
 });
 
 function removeBook(e) {
     const index = e.target.getAttribute(`data-index-number`);
     myLibrary.splice(index, 1);
-    createTableRow(myLibrary);
+    createTable(myLibrary);
 }
+
+
 
 
 

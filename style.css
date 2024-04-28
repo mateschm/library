@@ -25,3 +25,7 @@ table button {
 table button:hover {
     cursor: pointer;
 }
+
+td:nth-child(3):hover {
+    cursor: pointer;
+}
